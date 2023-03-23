@@ -11,6 +11,8 @@ session_start();
 		unset($_SESSION);
 		header("Location: login.php");
 	}
+
+  
 ?>
 
 <!doctype html>
@@ -25,6 +27,10 @@ session_start();
         <link rel="stylesheet" href="style.css">
     </head>
 <body>
+  
+<?php if (isset($error)) { ?>
+		<p><?php echo $error; ?></p>
+	<?php } ?>
 <input type="checkbox" id="check">
     <!--header area start-->
     <header>
@@ -38,7 +44,6 @@ session_start();
       <a href="http://localhost/Norai/login/login.php">
                     <span class="logout_btn" id="logout">Logout</span>
                 </a>
-            <span class="tooltip">Logout</span>
       </div>
     </header>
     <!--header area end-->

@@ -1,11 +1,33 @@
-<?php 
+<?php
+session_start();
 
-	session_start();
-	
-	if(isset($_SESSION['login'])){
-		header("Location: index.php");
-	}
+// Check if the user is already logged in
+if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true){
+    header('location: index.php');
+    exit;
+}
 
+
+// Check if the form has been submitted
+if(isset($_POST['username']) && isset($_POST['password'])){
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+
+    // Check if the username and password are correct
+    if($username === "myusername" && $password === "mypassword"){
+
+        // Set the session variables to mark the user as logged in
+        $_SESSION['loggedin'] = true;
+        $_SESSION['username'] = $username;
+
+        // Redirect the user to the home page
+        header('location: index.php');
+        exit;
+
+    } else {
+        $error = "Invalid username or password.";
+    }
+}
 
 ?>
 <!DOCTYPE html>
@@ -19,8 +41,12 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
     <div class="center">
         <h1>Login</h1>
+		<?php if(isset($error)){ ?>
+        <p><?php echo $error; ?></p>
+    <?php } ?>
         <form method="post">
             <div class="txt_field">
                 <input type="text" id="username" required>

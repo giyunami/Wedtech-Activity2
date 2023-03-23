@@ -1,8 +1,12 @@
-<?php 
-
-$db_user = "root";
-$db_pass = "";
-$db_name = "bbaccessusers";  
-
-$db = new PDO('mysql:host=localhost;dbname=' . $db_name . ';charset=utf8', $db_user, $db_pass);
-$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);?>
+<?php
+$servername ='localhost';
+$dbname   = 'mm_data';
+$username = 'root';
+$password = '@Noraisa1401';
+try {
+    $conn=mysqli_connect($servername,$username,$password,$dbname,"3307");
+    echo "connection success";
+} catch (Exception $e) {
+    echo "Connection failed: " . $e->getMessage();
+}
+?>

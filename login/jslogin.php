@@ -1,22 +1,21 @@
 <?php
+include 'config.php';
 session_start();
-require_once('config.php');
-
-$username = $_POST['username'];
-$password = $_POST['password'];
-
-$sql = "SELECT * FROM users WHERE username = ? AND password = ? LIMIT 1";
-$stmtselect  = $db->prepare($sql);
-$result = $stmtselect->execute([$username, $password]);
-
-if($result){
-	$user = $stmtselect->fetch(PDO::FETCH_ASSOC);
-	if($stmtselect->rowCount() > 0){
-		$_SESSION['login'] = $username;
-		echo 'Login Successfully';
-	}else{
-		echo 'There no user for that combo';		
+if(isset($_POST['login'])){
+	$username = $_POST['username'];
+	$password = $_POST['password'];
+	//check login details
+	$stmt = $con->prepare("select * from mm_user where username = '$username' and password = '$password'");
+	$stmt->execute();
+	//echo $stmt->rowCount();
+	//exit();
+	if($stmt->rowCount()>0){
+		$_SESSION['username'] = $username;
+		header("location: home.php");
+		$_SESSION['You are logged in'] = "Success";
 	}
-}else{
-	echo 'There were errors while connecting to database.';
-}
+	else{
+		header("location: login.php");
+		$_SESSION['error'] = "<div class='alert alert-danger' role='alert'>Oh snap! Invalid login details.</div>";
+		}
+	}
