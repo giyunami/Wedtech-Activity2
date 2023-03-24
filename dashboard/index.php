@@ -3,7 +3,7 @@
 session_start();
 
 	if(!isset($_SESSION['login'])){
-		header("http://localhost/Norai/dashboard/index.php");
+		header('http://localhost/Norai/dashboard/index.php#');
 	}
 
 	if(isset($_GET['#logout'])){
@@ -53,7 +53,7 @@ session_start();
         <img src="../img/Hat.png" class="profile_image" alt="">
         <h4>User</h4>
       </center>
-      <a href="#"><i class="fas fa-desktop"></i><span>Dashboard</span></a>
+      <a href="http://localhost/Norai/crud/phpcrud/index.php"><i class="fas fa-desktop"></i><span>Dashboard</span></a>
       <a href="#"><i class="fas fa-cogs"></i><span>Components</span></a>
       <a href="#"><i class="fas fa-table"></i><span>Tables</span></a>
       <a href="#"><i class="fas fa-th"></i><span>Forms</span></a>

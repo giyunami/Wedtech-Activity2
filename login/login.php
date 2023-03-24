@@ -1,6 +1,8 @@
 <?php
 session_start();
 
+$connection = mysqli_connect("localhost", "root", "@Noraisa1401", "mm_data", "3307");
+
 // Check if the user is already logged in
 if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true){
     header('location: index.php');
@@ -14,14 +16,14 @@ if(isset($_POST['username']) && isset($_POST['password'])){
     $password = $_POST['password'];
 
     // Check if the username and password are correct
-    if($username === "myusername" && $password === "mypassword"){
+    if($username === "username" && $password === "password"){
 
         // Set the session variables to mark the user as logged in
         $_SESSION['loggedin'] = true;
         $_SESSION['username'] = $username;
 
         // Redirect the user to the home page
-        header('location: index.php');
+        header("Location: index.php");
         exit;
 
     } else {
@@ -89,7 +91,7 @@ if(isset($_POST['username']) && isset($_POST['password'])){
 				success: function(data){
 					alert(data);
 					if($.trim(data) === "Login Successfully"){
-						setTimeout(' window.location.href =  "http://localhost/Norai/dashboard/index.php"', 1000);
+						setTimeout(' window.location.href =  "http://localhost/Norai/dashboard/index.php#"', 1000);
 					}
 				},
 				error: function(data){

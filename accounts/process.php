@@ -18,11 +18,11 @@ if (!$conn) {
 }
 
 // get form data
+$name = $_POST['name'];
 $email = $_POST['email'];
 $username = $_POST['username'];
 $password = $_POST['password'];
 
-// escape special characters to prevent SQL injection
 $email = mysqli_real_escape_string($conn, $email);
 
 

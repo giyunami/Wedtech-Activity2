@@ -11,7 +11,7 @@ if(isset($_POST['login'])){
 	//exit();
 	if($stmt->rowCount()>0){
 		$_SESSION['username'] = $username;
-		header("location: home.php");
+		header('Location: http://localhost/Norai/dashboard/index.php#');
 		$_SESSION['You are logged in'] = "Success";
 	}
 	else{

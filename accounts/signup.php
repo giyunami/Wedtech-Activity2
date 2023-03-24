@@ -13,22 +13,24 @@ require_once('config.php');
 </head>
 <div>
     <?php
-        if(isset($_POST['create'])){
-            $firstname=$_POST['firstname'];
-            $lastname=$_POST['lastname'];
-            $email=$_POST['email'];
-            $username=$_POST['username'];
-            $password=$_POST['password'];
+    $host = "localhost";
+    $user = "root";
+    $password = "@Noraisa1401";
+    $dbname = "mm_data";
+    
+    $conn = mysqli_connect($host, $user, $password, $dbname, "3307");
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $username = $_POST['username'];
+    $password = $_POST['password'];
 
-            $sql = "INSERT INTO users (firstname, lastname, email, username, password) values(?,?,?,?,?)";
-            $stmtinsert = $db->prepare($sql);
-            $result = $stmtinsert->execute([$firstname, $lastname, $email, $username, $password]);
-            if($result){
-                echo "Successfully Saved";
-            }else{
-                echo "There were errors while saving the data";
-            }
-        }
+$sql = "INSERT INTO mm_user (name, username, password, email) VALUES ('$name','$username', '$password', '$email')";
+
+if(mysqli_query($conn, $sql)) {
+    echo "Registration successful!";
+} else {
+    echo "Error: " . mysqli_error($conn);
+}
     ?>
 </div>
 <body>
@@ -38,7 +40,7 @@ require_once('config.php');
         <h1>Sign Up</h1>
         <form method="post">
             <div class="txt_field">
-                <input type="text" id="firstname" name="firstname" required>
+                <input type="text" id="name" name="name" required>
                 <span></span>
                 <label>Full Name</label>
             </div>
@@ -67,14 +69,13 @@ require_once('config.php');
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 <script type="text/javascript">
 	$(function(){
-		$('#register').click(function(e){
+		$('#signup').click(function(e){
 
 			var valid = this.form.checkValidity();
 
 			if(valid){
         
-			var firstname 	= $('#firstname').val();
-			var lastname	= $('#lastname').val();
+			var fullname 	= $('#name').val();
 			var email 		= $('#email').val();
             var username    = $('#username').val();
 			var password 	= $('#password').val();
