@@ -50,7 +50,7 @@ body {
 
 .top-nav>li {
     display: inline-block;
-    float: left;
+    align-items: left;
 }
 
 .top-nav>li>a {
@@ -223,5 +223,8 @@ ul.alert-dropdown {
 }
 
 .panel-yellow > a:hover {
+    color: #df8a13;
+}
+.navbar-brand {
     color: #df8a13;
 }

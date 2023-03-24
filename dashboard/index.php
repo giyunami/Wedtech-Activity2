@@ -45,20 +45,30 @@ session_start();
                     <span class="logout_btn" id="logout">Logout</span>
                 </a>
       </div>
+      <div class="title">
+        <h1 style="font-size: 500%; color: white;" ><center>WELCOME</center></h1>
+     
+        <h1 style="font-size: 500%; color: skyblue;" ><center>MAGICIANS!</center></h1>
+      </div>
     </header>
     <!--header area end-->
     <!--sidebar start-->
+    
     <div class="sidebar">
       <center>
         <img src="../img/Hat.png" class="profile_image" alt="">
         <h4>User</h4>
       </center>
+      <form action="" class="search-box">
+      <input type="text" class="text search-input" placeholder="Type here to search..." />
+    </form>
       <a href="http://localhost/Norai/crud/phpcrud/index.php"><i class="fas fa-desktop"></i><span>Dashboard</span></a>
       <a href="#"><i class="fas fa-cogs"></i><span>Components</span></a>
       <a href="#"><i class="fas fa-table"></i><span>Tables</span></a>
       <a href="#"><i class="fas fa-th"></i><span>Forms</span></a>
       <a href="#"><i class="fas fa-info-circle"></i><span>About</span></a>
       <a href="#"><i class="fas fa-sliders-h"></i><span>Settings</span></a>
+      
     </div>
     <!--sidebar end-->
 
