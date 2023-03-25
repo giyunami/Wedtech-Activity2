@@ -1,1 +1,0 @@
-# Wedtech-Activity2
